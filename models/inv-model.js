@@ -5,13 +5,15 @@ const invItem = new Schema({
     name: {type:String, required:true, unique: true },
     Quantity: {type:Number, required:true},
     Price: {type:Number, required:true},
-    Description: String
+    
 });
 
 const warehouse = new Schema({
     _id: {type: Number, unique:true, required: true},
     parentCompany: String,
     Location: String,
+    count: Number,
+    maxLength: 20, 
     inventory: [invItem]
 });
 

@@ -2,10 +2,12 @@
 const mongoose = require('mongoose');
 const warehouse = require("./Project_1/models/inv-model.js");
 
-const getInv = async () => {
+const getInvA = async () => {
     try{
+        console.log("reached controller");
         await mongoose.connect(process.env.ATLAS_URI);
-        const data = await warehouse.findOne(_id);
+        const data = await warehouse.findOne({warehouse: _id});
+        console.log(data);
 
     }catch(err) {
         mongoose.connection.close();
