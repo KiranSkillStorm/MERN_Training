@@ -16,7 +16,8 @@ app.use(routes);
 
 app.get('/', (req,res) => {
     //display page
-    res.sendFile(resolve("./public/views/index.html"));
+    //res.sendFile(resolve("./public/views/index.html"));
+    res.sendFile(resolve("C:/Users/Kaushik/Skillstorm/MERN Training/Project_1/public/views/index.html"));
 });
 
 app.put('/', (req, res) =>{
