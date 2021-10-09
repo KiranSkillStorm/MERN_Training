@@ -2,10 +2,13 @@
 
 const router = require('express').Router();
 const {resolve} = require('path');
-//require("../controllers/inv-controller.js");
+const {getInvA} = require("../../controllers/inv-controller");
 
-router.get('/', (req,res) => {
+router.get('/loadDataA', (req,res) => {
     console.log('testing');
+    //call controller
+    
+    res.status(200).json(getInvA());
 });
 
 

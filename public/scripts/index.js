@@ -1,4 +1,4 @@
-//import axios from "axios";
+
 
 
 
@@ -13,11 +13,10 @@ const loadData = async (e) => {
         method: 'GET',
         url: '/api/inv-router'
     })
-    .then(res => console.log(res))
+    .then(response => console.log(response.data))
     .catch(err => console.error(err));
     
-    //xhr.open('GET', '/api/inv-router');
-    //xhr.send();
-}
-loadCompanyA.addEventListener("click", loadData);
+    
+loadCompanyA.addEventListener("click", console.log('click recieved'));
 
+}

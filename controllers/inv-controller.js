@@ -1,6 +1,6 @@
 //require models
 const mongoose = require('mongoose');
-const warehouse = require("./Project_1/models/inv-model.js");
+const warehouse = require("../models/inv-model");
 
 const getInvA = async () => {
     try{
@@ -21,5 +21,6 @@ const getInvA = async () => {
 
 module.exports = {
     //export the controllers
+    getInvA
     
 }

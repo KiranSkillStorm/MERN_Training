@@ -13,7 +13,6 @@ const warehouse = new Schema({
     parentCompany: String,
     Location: String,
     count: Number,
-    maxLength: 20, 
     inventory: [invItem]
 });
 
