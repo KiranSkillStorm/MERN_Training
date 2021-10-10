@@ -3,17 +3,12 @@ const mongoose = require('mongoose');
 const warehouse = require("../models/inv-model");
 
 const getInvA = async () => {
-    try{
-        console.log("reached controller");
+    console.log("reached controller");
         await mongoose.connect(process.env.ATLAS_URI);
-        const data = await warehouse.findOne({warehouse: _id});
+        //const data = await warehouse.findOne({warehouse: id});
+        const data = await warehouse.find();
         console.log(data);
-
-    }catch(err) {
-        mongoose.connection.close();
-        console.log(err.message);
-        throw {status: 500, error: 'Could not retrieve data'};
-    }
+        return data;
 }
 
 //controller go here

@@ -11,7 +11,7 @@ const loadData = async (e) => {
 
     axios({
         method: 'GET',
-        url: '/api/inv-router'
+        url: './Project_1/routes/api/inv-router.js'
     })
     .then(response => console.log(response.data))
     .catch(err => console.error(err));

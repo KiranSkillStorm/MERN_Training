@@ -9,7 +9,7 @@ const invItem = new Schema({
 });
 
 const warehouse = new Schema({
-    _id: {type: Number, unique:true, required: true},
+    id: {type: Number, unique:true, required: true},
     parentCompany: String,
     Location: String,
     count: Number,
@@ -17,5 +17,5 @@ const warehouse = new Schema({
 });
 
 
-const warehouseData = mongoose.model('warehouse', warehouse);
+const warehouseData = mongoose.model('Company_A', warehouse, 'Company_A');
 module.exports = warehouseData;

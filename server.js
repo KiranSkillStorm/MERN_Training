@@ -1,6 +1,6 @@
 const express = require('express');
 const {resolve} = require('path');
-const routes = require('./routes/');
+const routes = require('./routes');
 
 
 require('dotenv').config();
@@ -12,7 +12,9 @@ const port = process.env.PORT || 8080;
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 app.use(express.static('public'));
+
 app.use(routes);
+//app.use('/loadDataA', require('./routes/api/inv-router'));
 
 app.get('/', (req,res) => {
     //display page
