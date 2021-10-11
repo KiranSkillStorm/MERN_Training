@@ -13,7 +13,7 @@ const loadData = async (e) => {
         method: 'GET',
         url: './Project_1/routes/api/inv-router.js'
     })
-    .then(response => console.log(response.data))
+    .then(response => res.send(response.array))
     .catch(err => console.error(err));
     
     

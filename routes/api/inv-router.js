@@ -14,7 +14,7 @@ router.use(async (req, res)=>{
 
 });
 
-router.get('/loadDataA', async (req,res) => {
+/*router.get('/loadDataA', async (req,res) => {
     console.log('testing');
     //call controller
     
@@ -24,7 +24,7 @@ router.get('/loadDataA', async (req,res) => {
     }catch(err){
         console.log(err);
     }
-});
+});*/
 
 
 
