@@ -42,7 +42,8 @@
                         </div>
                         <h3 class="card-title mb-3">Company A</h3>
                         <p class="card-text mb-3">lorem, ipsum dolor sit amet consectetur adipisicing elit.</p>
-                        <a href="/loadDataA" method="GET" action="/loadDataA" id="loadCompanyA" class="btn btn-primary">Load Inventory</a><!--BUTTON IS HERE-->
+                        <!--<a href="/loadDataA" method="GET" action="/loadDataA" id="loadCompanyA" class="btn btn-primary">Load Inventory</a>-->
+                        <button class="btn btn-primary" id="loadCompanyA">Load Inventory</button><!--BUTTON IS HERE-->
                     </div>
                 </div>
                 <div class="col-md">
@@ -85,13 +86,13 @@
             <table id="table" class=" table table-striped table-secondary table-hover">
                 <thead>
                     <tr>
-                        <th scope="col">Name</th>
-                        <th scope="col">Qty.</th>
-                        <th scope="col">Price</th>
+                        <th scope="col" data-field="name">Name</th>
+                        <th scope="col" data-field="qty">Qty.</th>
+                        <th scope="col" data-field="price">Price</th>
                         <th scope="col"></th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody id="rows">
                     <tr>
 
                         <td>Apple</td>
@@ -134,7 +135,7 @@
     <!--<script src ="C:\Users\Kaushik\Skillstorm\MERN Training\Project_1\public\scripts\index.js"></script>-->
 
     <!--AXIOS THINGS-->
-    <!--<script src="https://unpkg.com/axios/dist/axios.min.js%22%3E"></script>-->
+    <!--<script src="./node_modules/axios/dist/axios.min.js"></script>-->
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js"
      integrity="sha384-kQtW33rZJAHjgefvhyyzcGF3C5TFyBQBA13V1RKPf4uH+bwyzQxZ6CmMZHmNBEfJ"
