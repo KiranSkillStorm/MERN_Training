@@ -35,6 +35,22 @@ const loadDataB = async(e)=> {
 }
 loadCompanyB.addEventListener("click", loadDataB);
 
+//LOAD COMPANY C
+const loadCompanyC = document.getElementById("loadCompanyC");
+const loadDataC = async(e)=> {
+    e.preventDefault();
+    const response = await fetch('/loadData/C', {
+        method:'GET'
+    });
+    console.log(response);
+    if(response.status === 200){
+        const data = await response.json();
+        console.log(data);
+        addData(data);
+    }
+}
+loadCompanyC.addEventListener("click", loadDataC);
+
 
 function addData(array) {
 

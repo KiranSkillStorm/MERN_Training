@@ -2,7 +2,7 @@
 
 const router = require('express').Router();
 const {resolve} = require('path');
-const {getInvA, getInvB} = require("../../controllers/inv-controller");
+const {getInvA, getInvB, getInvC} = require("../../controllers/inv-controller");
 
 router.get('/A', async (req, res)=>{
     console.log('reached router.use');
@@ -20,6 +20,16 @@ router.get('/A', async (req, res)=>{
         }catch(err){
         console.log(err);
         }
+});
+
+router.get('/C', async (req, res)=>{
+    //console.log('reached router.use');
+    try{
+        res.status(200).json(await getInvC());
+    }catch(err){
+        console.log(err);
+    }
+
 });
 
 

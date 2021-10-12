@@ -19,4 +19,5 @@ const warehouse = new Schema({
 
 const warehouseData1 = mongoose.model('Company_A', warehouse, 'Company_A');
 const warehouseData2 = mongoose.model('Company_B', warehouse, 'Company_B');
-module.exports = {warehouseData1, warehouseData2};
+const warehouseData3 = mongoose.model('Company_C', warehouse, 'Company_C');
+module.exports = {warehouseData1, warehouseData2, warehouseData3};
