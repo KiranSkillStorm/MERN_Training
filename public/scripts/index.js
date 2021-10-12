@@ -51,6 +51,14 @@ const loadDataC = async(e)=> {
 }
 loadCompanyC.addEventListener("click", loadDataC);
 
+//get to update page
+// const loadUpdate = async() => {
+//     const response = await fetch('/form', {
+        
+//     });
+    
+// }
+
 
 function addData(array) {
 
