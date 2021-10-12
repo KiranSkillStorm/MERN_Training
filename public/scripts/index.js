@@ -22,6 +22,7 @@ const loadData = async (e) => {
     });
     if(response.status === 200){
         const data = await response.json();
+        //console.log(Array.isArray(data));
         addData(data);
     }
 
@@ -38,7 +39,18 @@ function addData(array) {
     //     index: rowID,
     //     row: array[0]
     // });
-
-    const table = document.createElement('table', class{""});
+    const cont = document.getElementById('tContainer');
+    const table = document.createElement('table');
+    table.setAttribute('class','table table-striped table-secondary table-hover');
+    const newRow = document.createElement('tr');
+    for(var i=0; i<3;i++){
+        const newCell = document.createElement('td');
+        newCell.textContent = array[i];
+        //console.log(array[i]);
+        newRow.appendChild(newCell);
+    }
+    //apped row to table
+    table.appendChild(newRow);
+    cont.appendChild(table);
     
 }
