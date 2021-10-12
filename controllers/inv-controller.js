@@ -7,11 +7,11 @@ const getInvA = async () => {
         await mongoose.connect(process.env.ATLAS_URI);
         //const data = await warehouse.findOne({warehouse: id});
         const data = await warehouse.findOne();
-        const inv = data.inventory[0];
-        const array = [inv.name, inv.Quantity, inv.Price];
-        console.log(inv);
+        const inv = data.inventory;
+        //const array = [inv.name, inv.Quantity, inv.Price];
+        //console.log(data.inventory);
         //console.log(Array.isArray(array));
-        return array;
+        return inv;
 }
 
 //controller go here
