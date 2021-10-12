@@ -1,17 +1,22 @@
 //require models
 const mongoose = require('mongoose');
-const warehouse = require("../models/inv-model");
+const {warehouseData1, warehouseData2 } = require("../models/inv-model");
 
 const getInvA = async () => {
     console.log("reached controller");
         await mongoose.connect(process.env.ATLAS_URI);
-        //const data = await warehouse.findOne({warehouse: id});
-        const data = await warehouse.findOne();
+        const data = await warehouseData1.findOne();
         const inv = data.inventory;
-        //const array = [inv.name, inv.Quantity, inv.Price];
-        //console.log(data.inventory);
-        //console.log(Array.isArray(array));
+        //console.log(data);
         return inv;
+}
+
+const getInvB = async () => {
+    await mongoose.connect(process.env.ATLAS_URI);
+    const data = await warehouseData2.findOne();
+    const inv = data.inventory;
+    //console.log(data);
+    return inv;
 }
 
 //controller go here
@@ -19,6 +24,7 @@ const getInvA = async () => {
 
 module.exports = {
     //export the controllers
-    getInvA
+    getInvA,
+    getInvB
     
 }

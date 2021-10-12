@@ -3,33 +3,43 @@
 
 
 
-//these are for the buttons on the cards to load Company data
+//LOAD COMPANY A
 const loadCompanyA = document.getElementById("loadCompanyA");
-const loadData = async (e) => {
+const loadDataA = async (e) => {
     e.preventDefault();
     console.log('button works');
-
-    const response = await fetch('/loadDataA', {
+    const response = await fetch('/loadData/A', {
         method: 'GET'
-
     });
     if(response.status === 200){
         const data = await response.json();
         //console.log(Array.isArray(data));
         addData(data);
+    } 
+}    
+loadCompanyA.addEventListener("click", loadDataA);
+
+//LOAD COMPANY B
+const loadCompanyB = document.getElementById("loadCompanyB");
+const loadDataB = async(e)=> {
+    e.preventDefault();
+    const response = await fetch('/loadData/B', {
+        method:'GET'
+    });
+    console.log(response);
+    if(response.status === 200){
+        const data = await response.json();
+        console.log(data);
+        addData(data);
     }
-
-    
 }
-    
-loadCompanyA.addEventListener("click", loadData);
-
+loadCompanyB.addEventListener("click", loadDataB);
 
 
 function addData(array) {
 
     const table = document.getElementById("rows");
-
+    table.innerHTML = "";
     for(var y=0; y<array.length; y++){
         const newRow = document.createElement('tr');
         const newCell = document.createElement('td');

@@ -3,7 +3,7 @@ const router = require('express').Router();
 const {resolve} = require('path');
 const apiRoute = require('./api/inv-router');
 router.use('/api/inv-router', apiRoute);
-router.use('/loadDataA', apiRoute);
+router.use('/loadData', apiRoute);
 
 
 module.exports = router;

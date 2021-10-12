@@ -14,7 +14,7 @@ app.use(express.urlencoded({extended: true}));
 app.use(express.static('public'));
 
 app.use(routes);
-//app.use('/loadDataA', require('./routes/api/inv-router'));
+
 
 app.get('/', (req,res) => {
     //display page
@@ -22,10 +22,10 @@ app.get('/', (req,res) => {
     //res.sendFile(resolve("C:/Users/Kaushik/Skillstorm/MERN Training/Project_1/public/views/index.html"));
 });
 
-app.get('/loadDataA', (req, res) => {
+// app.get('/loadDataA', (req, res) => {
     
-    console.log("hit server");
-});
+//     console.log("hit server");
+// });
 
 app.put('/', (req, res) =>{
     //HANDLE PUT
