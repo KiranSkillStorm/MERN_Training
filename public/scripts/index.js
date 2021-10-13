@@ -51,17 +51,64 @@ const loadDataC = async(e)=> {
 }
 loadCompanyC.addEventListener("click", loadDataC);
 
-//get to update page
-// const loadUpdate = async() => {
-//     const response = await fetch('/form', {
-        
-//     });
+//ADD ITEM
+const addItem = document.getElementById("addItem");
+const postItem = async(e) => {
+    e.preventDefault();
+    const request = await fetch('/manage/addItem', {
+        method:'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            name: itemName.value,
+            Quantity: itemQuant.value,
+            Price: itemPrice.value,
+            warehouseNum: warehouseNum.value
+        })
+    });
+    console.log(request);
     
-// }
+}
+addItem.addEventListener('click', postItem);
 
+//UPDATE ITEM
+const updateItem = document.getElementById("updateItem");
+updateItem.addEventListener("click", async (e) =>{
+    e.preventDefault();
+    const request = await fetch('/manage/updateItem', {
+        method: 'PUT',
+        header: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            name: itemName.value,
+            Quantity: itemQuant.value,
+            Price: itemPrice.value,
+            warehouseNum: warehouseNum.value
+        })
+    });
+    console.log(request);
+});
+
+//DELETE ITEM
+const deleteItem = document.getElementById("deleteItem");
+deleteItem.addEventListener("click", async (e) =>{
+    e.preventDefault();
+    const request = await fetch('/manage/deleteItem', {
+        method: 'DELETE',
+        header: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            name: itemName.value,
+            warehouseNum: warehouseNum.value
+        })
+    });
+    console.log(request);
+});
 
 function addData(array) {
-
     const table = document.getElementById("rows");
     table.innerHTML = "";
     for(var y=0; y<array.length; y++){
@@ -76,8 +123,6 @@ function addData(array) {
         newCell2.textContent = array[y].Price;
         newRow.appendChild(newCell2);
         table.appendChild(newRow);
-    }
-
-    
-    
+    } 
 }
+

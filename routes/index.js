@@ -5,6 +5,7 @@ const apiRoute = require('./api/inv-router');
 const viewRoutes = require('./views/viewRoutes');
 router.use('/api/inv-router', apiRoute);
 router.use('/loadData', apiRoute);
+router.use('/manage', apiRoute);
 router.use('/', viewRoutes);
 
 
