@@ -72,28 +72,31 @@ const addItem = async (req) => {
 }
 
 const deleteItem = async(req) => {
-    console.log('reached delete controller');
+    //console.log('reached delete controller');
     try{
-        await mongoose.connection(process.env.ATLAS_URI);
+        await mongoose.connect(process.env.ATLAS_URI);
+        //console.log('connect works');
         const wHouse = parseInt(req.warehouseNum);
+        //console.log(wHouse);
         switch(wHouse){
             
-            case 1: await warehouseData1.inventory.findOne(req.name, (err, warehouseData1) => {
-                    warehouseData1.inventory[0].remove();
-                });
-                console.log('delete switch');
-                await warehouseData1.save();
-                console.log('after delete switch save');
+            case 1:
+                const wH1 = await warehouseData1.findOneAndUpdate(
+                    {},
+                    {$pull:{inventory:{name: req.name}}}
+                );
                 break;
-            case 2: await warehouseData2.inventory.findOne(req.name, (err, warehouseData2) => {
-                warehouseData2.inventory[0].remove();
-                });
-                await warehouseData2.save();
+            case 2: 
+                const wH2 = await warehouseData2.findOneAndUpdate(
+                    {},
+                    {$pull: {inventory:{name: req.name}}}
+                );
                 break;
-            case 3: await warehouseData3.inventory.findOne(req.name, (err, warehouseData3) => {
-                warehouseData3.inventory[0].remove();
-                });
-                await warehouseData3.save();
+            case 3: 
+                const wH3 = await warehouseData3.findOneAndUpdate(
+                    {},
+                    {$pull:{inventory:{name: req.name}}}
+                );
                 break;
         }
 
@@ -103,7 +106,7 @@ const deleteItem = async(req) => {
     }catch(err){
         mongoose.connection.close();
         throw err;
-
+        
     }
 }
 

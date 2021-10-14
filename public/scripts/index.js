@@ -107,14 +107,17 @@ updateItem.addEventListener("click", async (e) =>{
 const deleteItem = document.getElementById("deleteItem");
 deleteItem.addEventListener("click", async (e) =>{
     e.preventDefault();
+    const warehouseNum = document.getElementById("warehouseNumD").value;
+    const name = document.getElementById("itemNameD").value;
+    console.log(warehouseNum,name);
     const request = await fetch('/manage/deleteItem', {
         method: 'DELETE',
-        header: {
+        headers: {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-            name: itemName.value,
-            warehouseNum: warehouseNum.value
+            name,
+            warehouseNum
         })
     });
     console.log(request);

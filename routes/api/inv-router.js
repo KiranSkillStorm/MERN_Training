@@ -48,10 +48,11 @@ router.post('/addItem', async(req,res) =>{
 router.delete('/deleteItem', async (req,res) => {
     console.log('reached router delete');
     try{
+        console.log(req.body);
         const data = await deleteItem(req.body);
         console.log(data);
     }catch(err){
-        res.status(500).json({error: 'Unable to delete item'});
+        res.status(500).json(err);
     }
 });
 
