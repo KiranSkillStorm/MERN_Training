@@ -3,13 +3,13 @@ const Schema = mongoose.Schema;
 
 const invItem = new Schema({
     name: {type:String, required:true, unique: true },
-    Quantity: {type:Number, required:true},
-    Price: {type:Number, required:true},
+    quantity: {type:Number, required:true},
+    price: {type:Number, required:true},
     
 });
 
 const warehouse = new Schema({
-    id: {type: Number, unique:true, required: true},
+    
     parentCompany: String,
     Location: String,
     count: Number,
@@ -20,4 +20,5 @@ const warehouse = new Schema({
 const warehouseData1 = mongoose.model('Company_A', warehouse, 'Company_A');
 const warehouseData2 = mongoose.model('Company_B', warehouse, 'Company_B');
 const warehouseData3 = mongoose.model('Company_C', warehouse, 'Company_C');
-module.exports = {warehouseData1, warehouseData2, warehouseData3};
+const inv_Item = mongoose.model('invItem', invItem);
+module.exports = {warehouseData1, warehouseData2, warehouseData3, inv_Item};

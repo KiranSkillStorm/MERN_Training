@@ -34,12 +34,11 @@ router.get('/C', async (req, res)=>{
 
 //ADD ITEM
 router.post('/addItem', async(req,res) =>{
-    console.log('reached router');
+    //console.log('reached router');
     try{
         const data = await addItem(req.body);
-        console.log('reached router');
-
-        
+        //console.log(data);
+        res.status(201).json('add item success!');  
     }catch(err){
         res.status(500).json(err);
     }
@@ -47,8 +46,9 @@ router.post('/addItem', async(req,res) =>{
 
 //DELETE ITEM
 router.delete('/deleteItem', async (req,res) => {
+    console.log('reached router delete');
     try{
-        const data = await deleteItem(req.params.title);
+        const data = await deleteItem(req.body);
         console.log(data);
     }catch(err){
         res.status(500).json({error: 'Unable to delete item'});
