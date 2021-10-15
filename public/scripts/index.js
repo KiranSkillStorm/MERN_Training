@@ -1,20 +1,15 @@
 
-//const axios = require('axios');
-//const fetch = require('node-fetch');
-
-
-
 //LOAD COMPANY A
 const loadCompanyA = document.getElementById("loadCompanyA");
 const loadDataA = async (e) => {
     e.preventDefault();
-    console.log('button works');
+
     const response = await fetch('/loadData/A', {
         method: 'GET'
     });
     if(response.status === 200){
         const data = await response.json();
-        //console.log(Array.isArray(data));
+
         addData(data);
     } 
 }    
