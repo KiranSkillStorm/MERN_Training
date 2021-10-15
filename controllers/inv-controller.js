@@ -110,29 +110,55 @@ const deleteItem = async(req) => {
     }
 }
 
-const updateItem = async() => {
+const updateItem = async(req) => {
     try{
         await mongoose.connect(process.env.ATLAS_URI);
-        const wHouse = req.body.warehouseNum;
-        const filter = {name: req.body.name};
-        const update = {
-            Quantity: req.body.Quantity,
-            Price: req.body.Price
-        }
+        console.log('update connect');
+        const wHouse = parseInt(req.warehouseNum);
+        const item = new inv_Item({
+            name: req.name, 
+            quantity: req.quantity, 
+            price: req.price
+        });
+        console.log('before update switch');
         switch(wHouse){
-            case 1: await warehouseData1.inventory.findOneAndUpdate(filter,update); break;
-            case 2: await warehouseData2.inventory.findOneAndUpdate(filter,update); break;
-            case 3: await warehouseData3.inventory.findOneAndUpdate(filter,update); break;
+            case 1: 
+            const wH1 = await warehouseData1.findOneAndUpdate(
+                {},
+                {$pull:{inventory:{name: req.name}}}
+                );
+                const wareH1 = await warehouseData1.findOne();
+                wareH1.inventory.push(item); 
+                await wareH1.save();
+            break;
+               
+
+            case 2: 
+                const wH2 = await warehouseData2.findOneAndUpdate(
+                {},
+                {$pull:{inventory:{name: req.name}}}
+                );
+                const wareH2 = await warehouseData2.findOne();
+                wareH2.inventory.push(item); 
+                await wareH2.save();
+                break;
+            case 3: 
+                const wH3 = await warehouseData3.findOneAndUpdate(
+                {},
+                {$pull:{inventory:{name: req.name}}}
+                );
+                const wareH3 = await warehouseData3.findOne();
+                wareH3.inventory.push(item); 
+                await wareH3.save();
+                break;
         }
-        //debug console logs
-        
-        console.log('reached updateItem');
         mongoose.connection.close();
         return;
     }
     catch(err)
     {
         mongoose.connection.close();
+        console.log(err);
         throw err;
     }
 }

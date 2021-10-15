@@ -52,6 +52,7 @@ router.delete('/deleteItem', async (req,res) => {
         const data = await deleteItem(req.body);
         console.log(data);
     }catch(err){
+        
         res.status(500).json(err);
     }
 });
@@ -62,7 +63,7 @@ router.put('/updateItem', async (req,res) => {
         await updateItem(req.body);
         console.log(data);
     }catch(err){
-        res.status(500).json({error: 'unable to update item'});
+        res.status(500).json(err);
     }
 });
 

@@ -88,16 +88,20 @@ addItem.addEventListener('click', postItem);
 const updateItem = document.getElementById("updateItem");
 updateItem.addEventListener("click", async (e) =>{
     e.preventDefault();
+    const name = document.getElementById("itemNameU").value;
+    const quantity = document.getElementById("itemQuantU").value;
+    const price = document.getElementById("itemPriceU").value;
+    const warehouseNum = document.getElementById("warehouseNumU").value;
     const request = await fetch('/manage/updateItem', {
         method: 'PUT',
-        header: {
+        headers: {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-            name: itemName.value,
-            Quantity: itemQuant.value,
-            Price: itemPrice.value,
-            warehouseNum: warehouseNum.value
+            name,
+            quantity,
+            price,
+            warehouseNum
         })
     });
     console.log(request);
